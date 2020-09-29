@@ -1,0 +1,163 @@
+﻿<Window x:Class="Furnishings_Shop.QueryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItemsDataSet"
+        mc:Ignorable="d"
+      
+    Title="Query Window" Height="530" Width="850" 
+         
+        MaxHeight="430" MaxWidth="850">
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock" >
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalAlignment"  Value="Stretch" />
+            <Setter Property="HorizontalAlignment"  Value="Right" />
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox" >
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="FontSize" Value="12"  />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+        <Style x:Key="MenuStyle" TargetType="MenuItem" >
+            <Setter Property="Height" Value="70" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="FontSize" Value="18"  />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="Background" Value="SteelBlue" />
+        </Style>
+    </Window.Resources>
+    <WrapPanel>
+        <Border   Height="55" Width="75" Margin="5,5,1,1">
+            <Menu Background="Azure"   >
+                <MenuItem Header="Search" Style="{StaticResource MenuStyle }" 
+                Click="Search_MenuItem_Click" />
+                <Separator Width="10"></Separator>
+            </Menu>
+        </Border>
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" >
+            <Menu Background="Azure"   >
+                <MenuItem   Header="Clear " Style="{StaticResource MenuStyle }" 
+                 Click="Clear_MenuItem_Click" />
+            </Menu>
+         </Border>
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <Border   Height="55" Width="75" Margin="1,7,1,1" Background="Azure" />
+        <!--#region TextBlocks-->
+        <StackPanel> <!--Cost-->
+            <TextBlock Name="lbl_Cost"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }" RenderTransformOrigin="0.504,0.5"> Price </TextBlock>
+                <TextBox Name="txt_CostQuery" Style="{StaticResource TextBoxStyle}"  PreviewTextInput="DigitsOnly_Input" ></TextBox>
+             </StackPanel>
+            </TextBlock>
+            <TextBlock Name="lbl_ConditionCost"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }"> condition</TextBlock>
+                 <ComboBox Name="cmb_ConditionCost" FontStretch="Normal" FontWeight="SemiBold" FontSize="14" Height="22" Width="auto" Margin="2" >  
+                    <ComboBoxItem>&gt;</ComboBoxItem>  
+                     <ComboBoxItem>&lt; </ComboBoxItem> 
+                     <ComboBoxItem>=</ComboBoxItem> 
+                    <ComboBoxItem>&gt;=</ComboBoxItem> 
+                    <ComboBoxItem>&lt;= </ComboBoxItem>
+                 </ComboBox>
+             </StackPanel>
+        </TextBlock>
+        </StackPanel>
+        <!--#region Balance-->
+        <StackPanel>  
+            <TextBlock Name="lbl_Balance"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }">Balance</TextBlock>
+                <TextBox Name="txt_BalanceQuery" Style="{StaticResource TextBoxStyle}" PreviewTextInput="DigitsOnly_Input" ></TextBox>
+             </StackPanel>
+        </TextBlock>
+            <TextBlock Name="lbl_ConditionBalance"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }"> condition</TextBlock>
+                 <ComboBox Name="cmb_ConditionBalance" FontStretch="Normal" FontWeight="SemiBold" FontSize="14" Height="22" Width="auto" Margin="2" >  
+                    <ComboBoxItem>&gt;</ComboBoxItem>  
+                     <ComboBoxItem>&lt; </ComboBoxItem> 
+                     <ComboBoxItem>=</ComboBoxItem> 
+                    <ComboBoxItem>&gt;=</ComboBoxItem> 
+                    <ComboBoxItem>&lt;= </ComboBoxItem>
+                 </ComboBox>
+             </StackPanel>
+        </TextBlock>
+        </StackPanel>
+        <!--#endregion Balance-->
+  <!--region Telephone-->
+    <StackPanel>
+            <TextBlock Name="lbl_Telepgone"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }">Telephone</TextBlock>
+                <TextBox Name="txt_Telephone" Style="{StaticResource TextBoxStyle}"  ></TextBox>
+             </StackPanel>
+        </TextBlock>
+            <TextBlock Name="lbl_ConditionTimeDelivery"  Width="100" Height="60">    
+            <!--<StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }"> condition</TextBlock>
+                 <ComboBox Name="cmb_ConditionTimeDelivery" FontStretch="Normal" FontWeight="SemiBold" FontSize="14" Height="22" Width="auto" Margin="2" >  
+                     <ComboBoxItem>&gt;</ComboBoxItem>  
+                     <ComboBoxItem>&lt; </ComboBoxItem> 
+                     <ComboBoxItem>=</ComboBoxItem> 
+                    <ComboBoxItem>&gt;=</ComboBoxItem> 
+                    <ComboBoxItem>&lt;= </ComboBoxItem>
+                 </ComboBox>
+             </StackPanel>-->
+        </TextBlock>
+     </StackPanel>
+   <!--end region Telephone-->
+
+        <!--region Time Delivery--><!--
+        <StackPanel>
+           <TextBlock Name="lbl_TimeDelivery"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }">Name</TextBlock>
+                <TextBox Name="txt_TimeDeliveryQuery" Style="{StaticResource TextBoxStyle}"  ></TextBox>
+             </StackPanel>
+        </TextBlock>
+            <TextBlock Name="lbl_ConditionTimeDelivery"  Width="100" Height="60">    
+            <StackPanel>
+                <TextBlock Style="{StaticResource LabelStyle }"> condition</TextBlock>
+                 <ComboBox Name="cmb_ConditionTimeDelivery" FontStretch="Normal" FontWeight="SemiBold" FontSize="14" Height="22" Width="auto" Margin="2" >  
+                     <ComboBoxItem>&gt;</ComboBoxItem>  
+                     <ComboBoxItem>&lt; </ComboBoxItem> 
+                     <ComboBoxItem>=</ComboBoxItem> 
+                    <ComboBoxItem>&gt;=</ComboBoxItem> 
+                    <ComboBoxItem>&lt;= </ComboBoxItem>
+                 </ComboBox>
+             </StackPanel>
+        </TextBlock>
+        </StackPanel>
+--><!--end region Time Delivery-->
+   <!--#endregion TextBlocks-->
+        <DataGrid Name="dgQuerySearchResult" Width="800" Height="200" Margin="10" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" />
+        <!--SelectionChanged="DgQuerySearchResult_SelectionChanged" ???? -->
+
+    </WrapPanel>
+</Window>

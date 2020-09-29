@@ -1,0 +1,170 @@
+﻿<Window x:Class="Furnishings_Shop.Order_Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItemsDataSet"
+        mc:Ignorable="d"
+        Title="Order Info" Height="450" Width="800" MaxHeight="430" MaxWidth="850" 
+       >
+
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock" >
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalAlignment"  Value="Stretch" />
+            <Setter Property="HorizontalAlignment"  Value="Center" />
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox" >
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="FontSize" Value="12"  />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        <Style x:Key="MenuStyle" TargetType="MenuItem" >
+            <Setter Property="Height" Value="70" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="FontSize" Value="18"  />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="Background" Value="SteelBlue" />
+        </Style>
+    </Window.Resources>
+<WrapPanel>
+<!--#region Menu-->        
+        <Border   Height="20" Width="75" Margin="7,7,1,1">
+            <Menu Background="White"   >
+                <!--<MenuItem Header="Search" Style="{StaticResource MenuStyle }" 
+                Click="Search_MenuItem_Click" />-->
+                <Separator Width="10"></Separator>
+            </Menu>
+        </Border>
+        <Border   Height="70" Width="auto" Margin="7,7,1,1">
+            <Menu Background="White"   >
+                <MenuItem Header="Save Change" Style="{StaticResource MenuStyle }" 
+                Click="btn_AcceptChange_Click" />
+                <Separator Width="10"></Separator>
+            </Menu>
+        </Border>
+        <Border   Height="70" Width="auto" Margin="7,7,1,1">
+            <Menu Background="White"   >
+                <MenuItem Header="Print Order" Style="{StaticResource MenuStyle }" 
+                Click="btn_PrintOrder_Click" />
+                <Separator Width="10"></Separator>
+            </Menu>
+        </Border>
+        <Border   Height="25" Width="75" Margin="1,7,1,1" Background="White" />
+        <Border   Height="25" Width="75" Margin="1,7,1,1" Background="White" />
+        <Border   Height="25" Width="75" Margin="1,7,1,1" Background="White" />
+        <Border   Height="25" Width="75" Margin="1,7,1,1" Background="White" />
+        <Border   Height="25" Width="75" Margin="1,7,1,1" Background="White" />
+      
+<!--#endregion Menu-->
+       
+ <!--#region TextBlocks-->
+
+        <StackPanel Width="100" Height="100">
+            <TextBlock  Text="Id" Grid.Column="0" Grid.Row="0" FontSize="14" Style="{StaticResource LabelStyle}" />
+            <TextBox Name="txt_Id" Grid.Column="0" Grid.Row="0"  PreviewTextInput="DigitsOnly_Input" PreviewKeyDown="Grid_PreviewKeyDown"
+                 Style="{StaticResource TextBoxStyle}" Width="60" Margin="10,10,10,20" />
+        </StackPanel>
+        <!--Info-->
+        <StackPanel Width="280"  Height="120" >
+            <!--Info-->
+            <TextBlock  Name="lbl_Info"  Width="220" Height="20" Style="{StaticResource LabelStyle }" TextAlignment="Left" >Order Info</TextBlock>
+            <TextBox Name="txt_Info" Style="{StaticResource TextBoxStyle}" Margin="3"   Width="270" Height="80"  
+                         MinLines="2" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"  >
+                
+            </TextBox>
+            <!--<ListBox Name="listFurnishings" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Width="200" Height="50" FontSize="11" Visibility="Visible" SelectionMode="Multiple" >
+                <ListBoxItem >Mita</ListBoxItem>
+                <ListBoxItem >Matras</ListBoxItem>
+                <ListBoxItem >Sapa</ListBoxItem>
+                <ListBoxItem >Aher</ListBoxItem>
+            </ListBox>-->
+        </StackPanel>
+        <!--Name-->
+        <StackPanel Name="Name" Width="150" Height="80" >
+            <TextBlock  Name="lbl_Name"  Width="100" Style="{StaticResource LabelStyle }" TextAlignment="Right"  > Customer Name</TextBlock>
+            <TextBox Name="txt_Name" Style="{StaticResource TextBoxStyle}"   Width="120" PreviewTextInput="NoDigits_Input">
+            </TextBox>
+        </StackPanel>
+
+        
+       <!--Date Order-->
+        <StackPanel Name="Date_Order" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Date_Order"  Style="{StaticResource LabelStyle }"  > Date Order</TextBlock>
+            <TextBox Name="txt_Date_Order" Style="{StaticResource TextBoxStyle}" Width="65"  IsReadOnly="True" >
+            </TextBox>
+        </StackPanel>
+
+        <!--Phone-->
+        <StackPanel Name="Telephone" Width="150" Height="80" >
+            <TextBlock  Name="lbl_Phone"  Width="80" Height="25" Style="{StaticResource LabelStyle }" TextAlignment="Left" > Telehhone</TextBlock>
+            <TextBox Name="txt_Phone" Style="{StaticResource TextBoxStyle}" Margin="2"  
+                     Width="125"  PreviewKeyDown="TelephoneNumber_Input" >
+            </TextBox>
+        </StackPanel>
+        <!--Adress-->
+        <StackPanel Name="Adress" Width="210" Height="150"  >
+            <TextBlock  Name="lbl_Adress"   Style="{StaticResource LabelStyle }" VerticalAlignment="Center" Margin="5,42,5,5" > Adress</TextBlock>
+            <TextBox x:Name="txt_Adress" Style="{StaticResource TextBoxStyle}"  VerticalAlignment="Center" Width="200" />
+        </StackPanel>
+        <!--Time_Delivery-->
+        <StackPanel Name="Time_Delivery" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Time_Delivery"  Width="80" Height="25" Style="{StaticResource LabelStyle }"  > Time Delivery</TextBlock>
+            <TextBox Name="txt_Time_Delivery" Style="{StaticResource TextBoxStyle}"  Width="55" PreviewTextInput="DigitsOnly_Input">
+            </TextBox>
+        </StackPanel>
+         <!--Time_Left-->
+        <StackPanel Name="Time_Left" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Time_Left"  Width="80" Height="25" Style="{StaticResource LabelStyle }"  >Time Left </TextBlock>
+            <TextBox Name="txt_Time_Left" Style="{StaticResource TextBoxStyle}"  Width="55" IsReadOnly="True" >
+            </TextBox>
+        </StackPanel>
+       
+       
+        
+
+        <!--Seller_Name-->
+        <StackPanel Name="Seller_Name" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Seller_Name"  Width="80" Height="25" Style="{StaticResource LabelStyle }"  >Seller</TextBlock>
+            <TextBox Name="txt_Seller_Name" Style="{StaticResource TextBoxStyle}" 
+                      IsReadOnly="True" PreviewTextInput="DigitsOnly_Input">
+            </TextBox>
+        </StackPanel>
+        <!--Cost-->
+        <StackPanel Name="Cost" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Cost"  Width="80" Height="25" Style="{StaticResource LabelStyle }"  > Cost </TextBlock>
+            <TextBox Name="txt_Cost" Style="{StaticResource TextBoxStyle}"  PreviewTextInput="DigitsOnly_Input">
+            </TextBox>
+        </StackPanel>
+        <!--Balance-->
+        <StackPanel Name="Balance" Width="100" Height="80" >
+            <TextBlock  Name="lbl_Balance"  Style="{StaticResource LabelStyle }"  >Balance </TextBlock>
+            <TextBox Name="txt_Balance" Style="{StaticResource TextBoxStyle}"  PreviewTextInput="DigitsOnly_Input">
+            </TextBox>
+        </StackPanel>
+        <!--Balance-->
+
+         <!--#endregion TextBlocks-->
+        <!--<DataGrid Name="dgQuerySearchResult" Width="800" Height="200" Margin="10" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" />
+        -->
+        <!--SelectionChanged="DgQuerySearchResult_SelectionChanged" ???? -->
+
+    </WrapPanel>
+</Window>

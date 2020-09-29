@@ -1,0 +1,143 @@
+﻿<Window x:Class="Furnishings_Shop.Add_New_Item_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Furnishings_Shop"
+        mc:Ignorable="d"
+        Title="Add Part" Height="450" Width="830" ResizeMode="CanResize" >
+    <Window.Resources>
+        <!--<Style x:Key="LabelStyle" TargetType="Label" >
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Margin" Value="7" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>-->
+        <Style x:Key="LabelStyle" TargetType="TextBlock" >
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalAlignment"  Value="Stretch" />
+            <Setter Property="HorizontalAlignment"  Value="Right" />
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!--<Style x:Key="TextBoxStyle" TargetType="TextBox" >
+            <Setter Property="Height" Value="auto" /> <Setter Property="Width" Value="100" /> <Setter Property="Margin" Value="7" />  
+            <Setter Property="FontSize" Value="18"  />  
+            <Setter Property="VerticalAlignment" Value="Bottom" /> <Setter Property="HorizontalContentAlignment" Value="Center" /> <Setter Property="VerticalContentAlignment" Value="Center" /> 
+            <Setter Property="BorderThickness" Value="3" />
+        </Style>-->
+        <Style x:Key="TextBoxStyle" TargetType="TextBox" >
+            <!--<Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="90" />-->
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="FontSize" Value="12"  />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+        <!--<Style x:Key="ButtonStyle" TargetType="Button" >
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Margin" Value="7" />
+            <Setter Property="FontSize" Value="12"  />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="3" />
+        </Style>-->
+        <Style x:Key="ButtonStyle" TargetType="Button" >
+            <Setter Property="Height" Value="70" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="FontSize" Value="18"  />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="SteelBlue" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Text="Id" Grid.Column="0" Grid.Row="0" FontSize="14"  Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtId" Grid.Column="0" Grid.Row="0" PreviewTextInput="DigitsOnly_Input" LostFocus="TxtId_LostFocus"  PreviewKeyDown="Grid_PreviewKeyDown"
+                 Style="{StaticResource TextBoxStyle}" Margin="10,10,10,20" />        
+        
+        <TextBlock Text="Info" Grid.Column="1" Grid.Row="0"  Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtInfo"   Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"  TextAlignment="Left" PreviewKeyDown="Grid_PreviewKeyDown" 
+              MinLines="2" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Margin="15,30,15,15"  />
+        <ListBox Name="listFurnishings" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Width="200" Height="50" FontSize="11" Visibility="Hidden" SelectionMode="Multiple" >
+            <ListBoxItem >Mita</ListBoxItem>
+            <ListBoxItem >Matras</ListBoxItem>
+            <ListBoxItem >Sapa</ListBoxItem>
+            <ListBoxItem >Aher</ListBoxItem>
+        </ListBox>
+        <TextBlock Text="Name" Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtName_Family" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TextAlignment="Left" PreviewTextInput="NoDigits_Input" PreviewKeyDown="Grid_PreviewKeyDown" 
+                 Margin="15,45,15,10" Style="{StaticResource TextBoxStyle}" />
+        <TextBlock Text  ="Adress" Grid.Column="2" Grid.Row="1"  Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtAdress"   Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" TextAlignment="Left" PreviewKeyDown="Grid_PreviewKeyDown" 
+                Margin="15,45,15,10" Style="{StaticResource TextBoxStyle}" />
+        <TextBlock Text="Telephone" Grid.Column="4" Grid.Row="1" Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtTelephone" Grid.Column="4" Grid.Row="1"  PreviewKeyDown ="TelephoneNumber_Input" 
+                Margin="15,45,15,10" Style="{StaticResource TextBoxStyle}" FontSize="10" FontWeight="Heavy" />
+        <!--PreviewTextInput="TelephoneNumber_Input"-->
+        <TextBlock  Text="Price" Grid.Column="0" Grid.Row="2" FontSize="14" Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtCost" Grid.Column="0" Grid.Row="2" PreviewTextInput="DigitsOnly_Input" PreviewKeyDown="Grid_PreviewKeyDown"
+                 Style="{StaticResource TextBoxStyle}" />
+        <TextBlock Text="Balance" Grid.Column="1" Grid.Row="2" Style="{StaticResource LabelStyle}"  />
+        <TextBox Name="txtBalance" Grid.Column="1" Grid.Row="2" PreviewTextInput="DigitsOnly_Input" PreviewKeyDown="Grid_PreviewKeyDown"
+                 Style="{StaticResource TextBoxStyle}" />
+
+        <TextBlock Text="Tme Delivery" Grid.Column="4" Grid.Row="2" Style="{StaticResource LabelStyle}" />
+        <TextBox Name="txtTime_Delivery" Grid.Column="4" Grid.Row="2" PreviewTextInput="DigitsOnly_Input" PreviewKeyDown="Grid_PreviewKeyDown"
+                 MaxLength="4"
+                 Style="{StaticResource TextBoxStyle}" />
+
+        <TextBlock Text="Seler" Grid.Column="2" Grid.Row="2" Style="{StaticResource LabelStyle}" />
+        <ComboBox Name="cmbSeller_Name" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" Margin="5"  VerticalAlignment="Bottom" Width="95" IsEditable="False"  >
+            <ComboBoxItem>Piter </ComboBoxItem>
+            <ComboBoxItem>James</ComboBoxItem>
+        </ComboBox>
+
+
+        <!-- <TextBox Name="txtQuantity_issuing" Grid.Column="6" Grid.Row="1" Style="{StaticResource TextBoxStyle}" /> 
+        <Label Content="Tool Out" Grid.Column="6" Grid.Row="1" Style="{StaticResource LabelStyle}" />-->
+        <!--<DatePicker   Name="Calendar" SelectedDateChanged="Calendar_SelectedDateChanged" Grid.Column="6" Grid.Row="1"
+                      Language="english" SelectedDateFormat="Short" 
+                      Focusable="False"   HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="10"/>-->
+        <Button Name="Add_Order" Content="Add Part" FontWeight="Heavy" Click="Add_Item_Click" Grid.Column="2" Grid.Row="5" Style="{StaticResource ButtonStyle}"
+                 />
+        <Button Name ="Close_ToolWindow" Content="Close" Click="Close_ToolWindow_Click" FontWeight="Heavy"  Grid.Column="4" Grid.Row="5" Style="{StaticResource ButtonStyle}"
+                 />
+        <Calendar Name="clndr_Date_Order" 
+                  Grid.Column="5"  Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  
+                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Language="english" 
+                   Margin="19.6,40.2,0,0"    Height="135" Width="190"
+         />
+       
+    </Grid>
+</Window>
