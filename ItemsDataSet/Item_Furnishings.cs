@@ -25,12 +25,12 @@ namespace Furnishings_Shop
 			str_ItemData.time_delivery =Int32.Parse(time_delivery.Text); str_ItemData.cost =Int32.Parse(cost.Text); str_ItemData.balance =Int32.Parse(balance.Text);
 			str_ItemData.date_order = date_order;
 		}
-		public static void AcceptChangeItem(  TextBox id,TextBox  info, TextBox name_family,TextBox adress, TextBox telephone, TextBox seller_name ,TextBox time_delivery, TextBox cost,TextBox balance , TextBox date_order )
+		public static void AcceptChangeItem(  TextBox id,TextBox  info, TextBox name_family,TextBox adress, TextBox telephone, ComboBox seller_name ,TextBox time_delivery, TextBox cost,TextBox balance , TextBox date_order )
 		{
 			str_ItemData.ID =Int32.Parse( id.Text);  str_ItemData.info = info.Text; str_ItemData.adress = adress.Text; str_ItemData.telephone = telephone.Text; 
 			str_ItemData.name_family = name_family.Text;
-			//ComboBoxItem item = (ComboBoxItem) seller_name.SelectedItem; 	str_ItemData.seller_name =  item.Content.ToString();  
-			str_ItemData.seller_name = seller_name.Text;
+			ComboBoxItem item = (ComboBoxItem) seller_name.SelectedItem; 	str_ItemData.seller_name =  item.Content.ToString();  
+			//str_ItemData.seller_name = seller_name.Text;
 			str_ItemData.time_delivery =Int32.Parse(time_delivery.Text); str_ItemData.cost =Int32.Parse(cost.Text); str_ItemData.balance =Int32.Parse(balance.Text);
 			str_ItemData.date_order = Convert.ToDateTime( date_order.Text);
 		}

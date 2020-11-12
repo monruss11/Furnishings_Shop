@@ -99,7 +99,7 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="5" VerticalAlignment="Top">
-                <Button Name="btnTimeDeliveryLeft" Content=" Time &#xa;    Left"  Click="btnTimeDeliveryLeft_Click"   Style="{StaticResource SmallButtonStyle}" Visibility="Hidden"/>
+                <Button Name="btnTimeDeliveryLeft" Content=" Time  Left"  Click="btnTimeDeliveryLeft_Click"   Style="{StaticResource SmallButtonStyle}" Visibility="Hidden"/>
                 <TextBox Name="txt_TimeDeliveryLeft" Style="{StaticResource TextBoxStyle}"  PreviewTextInput="DigitsOnly_Input"  PreviewKeyDown="Grid_PreviewKeyDown"  
                          MouseDoubleClick="txt_TimeDeliveryLeft_MouseDoubleClick"  Visibility="Hidden">
                  </TextBox>
@@ -113,6 +113,7 @@
             <DataGrid  Name="dataGrid_ItemsDataSet" Grid.Row="2"  Grid.ColumnSpan="6" Grid.RowSpan="4" HorizontalAlignment="Left"   
                        Margin="20,20,20,20" VerticalAlignment="Top"
                       MinColumnWidth="30"   MinRowHeight="20" SelectionMode="Single" FontSize="12"
+                       IsReadOnly="True"
                        BeginningEdit="DataGrid_ItemsDataSet_BeginningEdit" 
                        PreviewTextInput="DataGrid_ItemsDataSet_PreviewTextInput" >
 

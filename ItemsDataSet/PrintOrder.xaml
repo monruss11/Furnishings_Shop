@@ -107,7 +107,7 @@
             <TextBox Name="txt_Adress" 
                     Margin="5,2,2.4,2"   ScrollViewer.VerticalScrollBarVisibility="Auto" 
                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Style="{StaticResource TextBoxStyle}"
-                     Width="auto" Height="auto"   IsReadOnly="True" TextChanged="txt_Adress_TextChanged_1" >
+                     Width="auto" Height="auto"   IsReadOnly="True" >
             </TextBox>
         </StackPanel>
 

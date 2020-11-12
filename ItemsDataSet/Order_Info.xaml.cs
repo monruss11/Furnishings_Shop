@@ -29,16 +29,18 @@ namespace Furnishings_Shop
 		DataRow dr_Order ;
 		List <string []> lst_ChoisedPositions = new List<string[]> { };
 		public int index;
+	
 
-		public Order_Info()
-		{
-			InitializeComponent();
-			Double width  = SystemParameters.FullPrimaryScreenWidth;
-            Double height = SystemParameters.FullPrimaryScreenHeight;
-			this.Top = (height - this.Height) / 2+50;
-            this.Left = (width - this.Width) / 2+50;
-			ds = writereadExcel.ReadFromFile();
-		}
+		//public Order_Info()
+		//{
+		//	InitializeComponent();
+		//	Double width  = SystemParameters.FullPrimaryScreenWidth;
+  //          Double height = SystemParameters.FullPrimaryScreenHeight;
+		//	this.Top = (height - this.Height) / 2+50;
+  //          this.Left = (width - this.Width) / 2+50;
+		//	ds = writereadExcel.ReadFromFile();
+			
+		//}
 
 		public Order_Info(int index)
 		{
@@ -53,13 +55,18 @@ namespace Furnishings_Shop
 			tbl_orderData = MainWindow.dataSet.Tables[0]; dr_Order = tbl_orderData.Rows[index];
 			this.Title =  "Order #" + Convert.ToString(dr_Order["id"]) ;
 			FillTheFormOfOrder();
+			//ComboBox cmbSeller_Name_ = new ComboBox();
+			//cmbSeller_Name_.ItemsSource = "Piter , James"; cmbSeller_Name_.Width = 200; cmbSeller_Name_.Height = 20;
+			//cmbSeller_Name_.Visibility = Visibility.Visible;
 		}
 
 		private void FillTheFormOfOrder()
 		{
 			DateTime dateOfOrder = (DateTime)dr_Order["Date_Order"];
 			txt_Id.Text = dr_Order["id"].ToString();
-			txt_Info.Text = dr_Order["Info"].ToString(); txt_Seller_Name.Text = dr_Order["Seller_Name"].ToString(); txt_Name.Text = dr_Order["Name"].ToString();
+			txt_Info.Text = dr_Order["Info"].ToString(); 
+			cmbSeller_Name.Text = dr_Order["Seller_Name"].ToString(); 
+			txt_Name.Text = dr_Order["Name"].ToString();
 			txt_Adress.Text = dr_Order["adress"].ToString(); txt_Phone.Text = dr_Order["Telephone"].ToString(); txt_Cost.Text = dr_Order["cost"].ToString();
 			txt_Balance.Text = dr_Order["balance"].ToString(); 
 			txt_Time_Delivery.Text = dr_Order["time_delivery"].ToString();
@@ -121,7 +128,7 @@ exit:;
 
 		private void btn_AcceptChange_Click(object sender, RoutedEventArgs e)
 		{
-			try { Item_Furnishings.AcceptChangeItem(txt_Id, txt_Info, txt_Name, txt_Adress, txt_Phone, txt_Seller_Name, txt_Time_Delivery, txt_Cost, txt_Balance, txt_Date_Order); }
+			try { Item_Furnishings.AcceptChangeItem(txt_Id, txt_Info, txt_Name, txt_Adress, txt_Phone, cmbSeller_Name, txt_Time_Delivery, txt_Cost, txt_Balance, txt_Date_Order); }
 			catch (Exception ex) { MessageBox.Show(ex.Message.ToString() + "accept change 1"); }
 			try { AcceptChangeItemDataSet(Item_Furnishings.str_ItemData); } catch (Exception ex) { MessageBox.Show(ex.Message.ToString() + "accept change 2");  }
 			try { writereadExcel.writeToExcel(MainWindow.dataSet); } catch (Exception ex) { MessageBox.Show(ex.Message.ToString() + "accept change 3");  }

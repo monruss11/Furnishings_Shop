@@ -23,7 +23,6 @@ using OfficeOpenXml.Style;
 using System.Threading;
 using System.Globalization;
 
-
 namespace Furnishings_Shop
 {
 	/// <summary>

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsDataSet", "ItemsDataSet\ItemsDataSet.csproj", "{4F6315F4-590C-4023-BFD8-211930AD74DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furnishings_Shop", "ItemsDataSet\Furnishings_Shop.csproj", "{4F6315F4-590C-4023-BFD8-211930AD74DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D07447B-DC0B-4E1F-A9DC-0F0DE42BE876}"
 	ProjectSection(SolutionItems) = preProject
