@@ -46,7 +46,7 @@ namespace Furnishings_Shop
 		public void ColumnsProperty(DataTable table)
 		{
 			dgQuerySearchResult.HorizontalContentAlignment = HorizontalAlignment.Left;
-			dgQuerySearchResult.ItemsSource = queryData.DefaultView;
+			dgQuerySearchResult.ItemsSource = queryData.DefaultView; 
 			for (int i = 0; i < table.Columns.Count; i++)
 			{
 				switch (i)
@@ -66,6 +66,7 @@ namespace Furnishings_Shop
 				//dgQuerySearchResult.Columns[8].
 				//	????????  (dgQuerySearchResult.Columns[table.Columns.Count - 1] as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
 			}
+			
 			// Format Date in Date Column
 		}
 		private void  CheckInputQuery(TextBox[] positions, ComboBox[] conditions)
@@ -92,9 +93,6 @@ namespace Furnishings_Shop
 						}
 						else { MessageBox.Show("Choise Condition"); goto exit; }
 					}
-					
-					
-					
 					//if (valuesOfpositions[0]!= "telephone")  valuesOfpositions[2] = positions[i].Text.ToString();
 					//else valuesOfpositions[2] = "'"+positions[i].Text+"'";
 
@@ -111,7 +109,7 @@ namespace Furnishings_Shop
 		}
 		void SearchByOrderProperties(List<string[]> choisedpositions)
 		{
-			string expression = "Date_Order < #10/09/2019#";
+			string expression = "";
 			switch (choisedpositions.Count)
 			{
 				case 1:
@@ -127,13 +125,13 @@ namespace Furnishings_Shop
 					+ choisedpositions[2][0] + " " + choisedpositions[2][1] + choisedpositions[2][2];
 					break;
 			}
-			DataRow[] selectedRows = ds.Tables[0].Select(expression); // !!!!!! Query !!!!
-																	  //DataRow[] selectedRows =  MainWindow.dataSet.Tables[0].Select(expression); // !!!!!! Query !!!!
-			if (selectedRows.Any())
+			if (expression != "")
 			{
-				queryData = selectedRows.CopyToDataTable<DataRow>();
-				// cmb_ConditionCost.SelectedItem=null; clear choise in comboBox
+				DataRow[] selectedRows = ds.Tables[0].Select(expression); // !!!!!! Query !!!!   //DataRow[] selectedRows =  MainWindow.dataSet.Tables[0].Select(expression); // !!!!!! Query !!!!
+				if (selectedRows.Any()) { queryData = selectedRows.CopyToDataTable<DataRow>(); }    // cmb_ConditionCost.SelectedItem=null; clear choise in comboBox 
 			}
+			else goto exit;
+		exit:;
 		}
 
 		#region Buttons Events       
@@ -141,6 +139,7 @@ namespace Furnishings_Shop
 		{
 			//TextBox[] positions ={ txt_CostQuery, txt_BalanceQuery,  txt_Telephone};
 			//ComboBox[] conditions = { cmb_ConditionCost, cmb_ConditionBalance/*, cmb_ConditionTimeDelivery*/ };
+			lst_ChoisedPositions.Clear(); queryData.Clear();
 			CheckInputQuery(positions, conditions); 	SearchByOrderProperties(lst_ChoisedPositions); 	ColumnsProperty(queryData);
     	} // Search MenuItem
 		private void Clear_MenuItem_Click(object sender, RoutedEventArgs e)
