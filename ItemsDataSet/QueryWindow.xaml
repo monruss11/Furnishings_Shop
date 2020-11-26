@@ -114,7 +114,7 @@
             <TextBlock Name="lbl_Telepgone"  Width="100" Height="60">    
             <StackPanel>
                 <TextBlock Style="{StaticResource LabelStyle }">Telephone</TextBlock>
-                <TextBox Name="txt_Telephone" Style="{StaticResource TextBoxStyle}"  ></TextBox>
+                <TextBox Name="txtTelephone" Style="{StaticResource TextBoxStyle}" PreviewKeyDown="TelephoneNumber_Input" > </TextBox>
              </StackPanel>
         </TextBlock>
             <TextBlock Name="lbl_ConditionTimeDelivery"  Width="100" Height="60">    

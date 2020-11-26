@@ -39,7 +39,7 @@ namespace Furnishings_Shop
             this.Left = (width - this.Width) / 2+50;
 			ds = writereadExcel.ReadFromFile(); 
 			dgQuerySearchResult.HorizontalContentAlignment = HorizontalAlignment.Left;
-			positions[0] = txt_CostQuery; positions[1] = txt_BalanceQuery; positions[2]= txt_Telephone ;
+			positions[0] = txt_CostQuery; positions[1] = txt_BalanceQuery; positions[2]= txtTelephone ;
 			conditions[0] = cmb_ConditionCost; conditions[1]= cmb_ConditionBalance/*, cmb_ConditionTimeDelivery*/;
 			//MainWindow.dataSet.Tables[0];
 		}
@@ -156,6 +156,27 @@ namespace Furnishings_Shop
 			short value;
 			if (!Int16.TryParse(e.Text, out value)) e.Handled = true;
 		}
-		
+		private void TelephoneNumber_Input(object sender, KeyEventArgs e)
+		{
+			KeyConverter convert = new KeyConverter();
+			//string number = "";  
+			if (e.Key == Key.Space || e.Key < Key.D0 & e.Key != Key.Delete || e.Key > Key.D9) { goto exit; }
+			if (txtTelephone.Text.Length < 13 || e.Key == Key.Delete)
+			{
+				int i = 0; char[] chararray = new char[13];
+				switch (txtTelephone.Text.Length)
+				{
+					case 3: txtTelephone.Text += "-"; break;
+					case 7: txtTelephone.Text += "-"; break;
+					case 10: txtTelephone.Text += "-"; break;
+				}
+				if (e.Key == Key.Back || e.Key == Key.Delete) { txtTelephone.Text = ""; goto exit; }
+				if (e.Key >= Key.D0 || e.Key <= Key.D9 || txtTelephone.Text.Length != 3 || txtTelephone.Text.Length != 7 || txtTelephone.Text.Length != 10)
+				{ txtTelephone.Text += convert.ConvertToString(null, e.Key); }
+			}
+		exit:
+			e.Handled = true;
+		}
+
 	} // class
 } // namespace
